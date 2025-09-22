@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPERACION-DE-GRUAS</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="vista_general.css">
+</head>
+
+<body>
+    <button class="back-page-btn" style="position: absolute; left: 0; top: 0;" onclick="backPage()">
+        <span class="arrow">❮</span>
+    </button>
+
+    <div class="logo-container">
+        <img src="images/logo_color.png" alt="Logo AngloAmerican" class="logo">
+    </div>
+
+    <div class="main-container">
+        <header class="page-header">
+            <h1 class="gradient-text">OPERACION-DE-GRUAS</h1>
+            <h4>Elige aquí el curso con el que quieres comenzar tu aprendizaje</h4>
+        </header>
+
+        <main>
+            <div class="grid-container">
+                <!-- Módulo 1 -->
+                <div class="card" style="background-image: url('images/caratulas/curso1.png');">
+                    <img src="images/logo_blanco.png" alt="Logo AngloAmerican" class="logo-inicio">
+                    <div class="inicio-box">
+                        <h1 class="inicio-title">Manual de operación</h1>
+                        <button id="empezarBtn-1" class="start-button-card">Comenzar</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="card" style="background-image: url('images/caratulas/curso2.png');">
+                    <img src="images/logo_blanco.png" alt="Logo AngloAmerican" class="logo-inicio">
+                    <div class="inicio-box">
+                        <h1 class="inicio-title">Mantenimiento de equipos móviles</h1>
+                        <button id="empezarBtn-2" class="start-button-card">Comenzar</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="card" style="background-image: url('images/caratulas/curso3.png');">
+                    <img src="images/logo_blanco.png" alt="Logo AngloAmerican" class="logo-inicio">
+                    <div class="inicio-box">
+                        <h1 class="inicio-title">Mantenimiento de grúa articulada</h1>
+                        <button id="empezarBtn-3" class="start-button-card">Comenzar</button>
+                    </div>
+                </div>
+
+                <!-- Módulo 4 -->
+                <div class="card" style="background-image: url('images/caratulas/curso4.png');">
+                    <img src="images/logo_blanco.png" alt="Logo AngloAmerican" class="logo-inicio">
+                    <div class="inicio-box">
+                        <h1 class="inicio-title">Aparejamiento de cargas y señales</h1>
+                        <button id="empezarBtn-4" class="start-button-card">Comenzar</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="typeModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="modal-text-content">
+                <h3 id="modalCode"></h3>
+                <p id="modalDescription"></p>
+            </div>
+
+            <img id="modalImage" src="" alt="Imagen del curso" class="modal-image">
+        </div>
+    </div>
+
+    <script src="../js/audioPlayer.js"></script>
+    <script src="../js/SCORM.js"></script>
+    <script>
+        // Redirigir con verificación
+        function abrirModulo(ruta) {
+            fetch(ruta, { method: 'HEAD' }) // intenta acceder al archivo
+                .then(res => {
+                    if (res.ok) {
+                        window.location.href = ruta;
+                    } else {
+                        window.location.href = "error.html";
+                    }
+                })
+                .catch(() => {
+                    window.location.href = "error.html";
+                });
+        }
+
+        // Botones
+        document.getElementById('empezarBtn-1').addEventListener('click', () => {
+            abrirModulo("../Modulo 1 - Manual de operación de - grúa articulada Fassi, Hiab, Hyva/index.html");
+        });
+
+        document.getElementById('empezarBtn-2').addEventListener('click', () => {
+            abrirModulo("../Modulo 2 - Manual de mantenimiento de equipos móviles - perforadora Smart Rock D65/index.html");
+        });
+
+        document.getElementById('empezarBtn-3').addEventListener('click', () => {
+            abrirModulo("../Modulo 3 - Manual de mantenimiento de - grúa articulada/index.html");
+        });
+
+        document.getElementById('empezarBtn-4').addEventListener('click', () => {
+            abrirModulo("../Modulo 4 - Aparejamiento de cargas y señales estnadar en grúa articulada/index.html");
+        });
+
+        function backPage() {
+            window.location.href = '../menu_principal/vista_general.html';
+        }
+
+        // Iniciar SCORM
+        ScormManager.init();
+    </script>
+</body>
+</html>
