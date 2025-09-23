@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../../assets/css/ProgressBar.css" />
   <link rel="stylesheet" href="../../assets/css/ex1.css" />
 
-    <link rel="stylesheet" href="../../assets/css/M2/css_pg8.css" />
+    <link rel="stylesheet" href="../../assets/css/M1/css_pg1.css" />
 
 
   <!-- Scripts -->
@@ -44,20 +44,348 @@
     </nav>
 
 
-  <!-- Logo inferior -->
-  <div class="logo-container"><img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
-  <!-- Título principal -->
-  <header><h1 class="titulo-epp"><span class="gradient-text2">DESCRIPCIÓN DE LA MÁQUINA</span></h1></header>
-
+    <!-- Logo inferior -->
+    <div class="logo-container"><img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
+    
+    <!-- Título principal -->
+    <header><h1 class="titulo-epp"><span class="gradient-text2">Circuito de Clasificación - Molienda</span></h1></header>
+    
     <!-- Contenido principal -->
-    <div class="contenido">
-        <iframe src="../componentes/Carrucel_M2pg8.html" frameborder="0" class="iframe-carrusel"> </iframe>
+
+    <div class="contenidox">
+
+        <!-- CONTENEDOR DE LA IMAGEN -->
+        <div class="img-container">
+            <img src="../../assets/images/M1/a.jpeg" class="graf" id="myImage">
+            <div class="fullscreen-icon" onclick="openFullscreen()">
+                <img src="../../assets/images/Icons/selcA.gif" alt="fullscreen">
+            </div>
+        </div>
+
+        <!-- CONTENEDOR DEL CURSO -->
+        <div class="curso-container">
+
+        <div class="content-wrapper">
+            <div class="info-card">
+            <h2 class="section-title">Controles del Sistema</h2>
+            
+            <div class="interactive-controls">
+                <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="sag">Molino SAG</button>
+                <button class="filter-btn" data-filter="bolas">Molino Bolas</button>
+                <button class="filter-btn" data-filter="flujo">Control Flujo</button>
+                <button class="filter-btn" data-filter="temperatura">Temperatura</button>
+                </div>
+                <input type="text" class="search-box" placeholder="Buscar controles...">
+            </div>
+
+            <div class="controls-grid" id="controlsGrid">
+                <div class="control-item" data-category="sag flujo">
+                <span class="control-number">1</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de flujo másico de mineral fresco a molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="sag">
+                <span class="control-number">2</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de adición de bolas a faja transportadora de alimentación a molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="sag">
+                <span class="control-number">3</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de adición de lechada de cal al chute intermedio de alimentación al molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="sag">
+                <span class="control-number">4</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de dilución en la alimentación del molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="sag flujo">
+                <span class="control-number">5</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de flujo de agua a la zaranda vibratorio del molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="sag flujo">
+                <span class="control-number">6</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de flujo de agua al Trommel molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="sag temperatura">
+                <span class="control-number">7</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de temperatura de aceite a la salida del reservorio del sistema de lubricación molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="sag flujo">
+                <span class="control-number">8</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de flujo de adición de agua de procesos hacia el cajón descarga molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="sag">
+                <span class="control-number">9</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de nivel de pulpa en el cajón descarga molino SAG 1</span>
+                </div>
+                
+                <div class="control-item" data-category="flujo">
+                <span class="control-number">10</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de presión en el distribuidor nido de hidrociclones</span>
+                </div>
+                
+                <div class="control-item" data-category="bolas temperatura">
+                <span class="control-number">11</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de temperatura de aceite a la salida del reservorio del sistema de lubricación molino bolas 1</span>
+                </div>
+                
+                <div class="control-item" data-category="bolas flujo">
+                <span class="control-number">12</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de flujo de agua al Trunnion magnético molino bolas 1</span>
+                </div>
+                
+                <div class="control-item" data-category="bolas">
+                <span class="control-number">13</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de adición de bolas a la faja transportadora alta pendiente de bolas molinos bolas</span>
+                </div>
+                
+                <div class="control-item" data-category="flujo">
+                <span class="control-number">14</span>
+                <img class="control-icon" src="../../assets/images/Icons/selcA.gif" alt="Clic para revelar">
+                <span class="control-text hidden">Control de nivel en el cajón de retorno muestreador rougher</span>
+                </div>
+            </div>
+            </div>
+            
+            <div class="progress-indicator">
+            <div class="progress-text">Progreso por categorías</div>
+            
+            <div class="category-progress">
+                <div class="category-item">
+                <div class="category-name">Molino SAG</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="sagProgress"></div>
+                </div>
+                <div class="progress-percentage" id="sagPercentage">0%</div>
+                </div>
+                
+                <div class="category-item">
+                <div class="category-name">Molino Bolas</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="bolasProgress"></div>
+                </div>
+                <div class="progress-percentage" id="bolasPercentage">0%</div>
+                </div>
+                
+                <div class="category-item">
+                <div class="category-name">Control Flujo</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="flujoProgress"></div>
+                </div>
+                <div class="progress-percentage" id="flujoPercentage">0%</div>
+                </div>
+                
+                <div class="category-item">
+                <div class="category-name">Temperatura</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="temperaturaProgress"></div>
+                </div>
+                <div class="progress-percentage" id="temperaturaPercentage">0%</div>
+                </div>
+            </div>
+            
+            <div class="overall-progress">
+                <div class="progress-text">Progreso General</div>
+                <div class="progress-bar">
+                <div class="progress-fill" id="overallProgress"></div>
+                </div>
+                <div class="progress-text" id="overallPercentage">0% completado</div>
+            </div>
+            </div>
+        </div>
+        </div>
+
     </div>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const controlItems = document.querySelectorAll('.control-item');
+        const searchBox = document.querySelector('.search-box');
+
+        // Progress elements
+        const sagProgress = document.getElementById('sagProgress');
+        const bolasProgress = document.getElementById('bolasProgress');
+        const flujoProgress = document.getElementById('flujoProgress');
+        const temperaturaProgress = document.getElementById('temperaturaProgress');
+        const overallProgress = document.getElementById('overallProgress');
+
+        const sagPercentage = document.getElementById('sagPercentage');
+        const bolasPercentage = document.getElementById('bolasPercentage');
+        const flujoPercentage = document.getElementById('flujoPercentage');
+        const temperaturaPercentage = document.getElementById('temperaturaPercentage');
+        const overallPercentage = document.getElementById('overallPercentage');
+
+        // Botón continuar
+        const startButton = document.querySelector('.start-button');
+        startButton.disabled = true; // empieza bloqueado
+
+        let visitedControls = {
+            sag: new Set(),
+            bolas: new Set(),
+            flujo: new Set(),
+            temperatura: new Set()
+        };
+
+        const categoryCounts = {
+            sag: 0,
+            bolas: 0,
+            flujo: 0,
+            temperatura: 0
+        };
+
+        controlItems.forEach(item => {
+            const categories = item.getAttribute('data-category').split(' ');
+            categories.forEach(category => {
+                if (categoryCounts[category] !== undefined) {
+                    categoryCounts[category]++;
+                }
+            });
+        });
+
+        // Filtros
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                filterControls(filterValue, searchBox.value);
+            });
+        });
+
+        // Buscador
+        searchBox.addEventListener('input', function() {
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            filterControls(activeFilter, this.value);
+        });
+
+        // Interacción con cada control
+        controlItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const controlNumber = this.querySelector('.control-number').textContent;
+                const controlText = this.querySelector('.control-text');
+                const controlIcon = this.querySelector('.control-icon');
+                const categories = this.getAttribute('data-category').split(' ');
+                
+                if (controlText.classList.contains('hidden')) {
+                    controlText.classList.remove('hidden');
+                    controlIcon.classList.add('hidden');
+                    this.classList.add('revealed');
+                    
+                    categories.forEach(category => {
+                        if (visitedControls[category]) {
+                            visitedControls[category].add(controlNumber);
+                        }
+                    });
+                    updateProgress();
+                } else {
+                    controlText.classList.add('hidden');
+                    controlIcon.classList.remove('hidden');
+                    this.classList.remove('revealed');
+                    
+                    categories.forEach(category => {
+                        if (visitedControls[category]) {
+                            visitedControls[category].delete(controlNumber);
+                        }
+                    });
+                    updateProgress();
+                }
+            });
+        });
+
+        function filterControls(category, searchTerm) {
+            controlItems.forEach(item => {
+                const categories = item.getAttribute('data-category');
+                const text = item.querySelector('.control-text').textContent.toLowerCase();
+                
+                const matchesCategory = category === 'all' || categories.includes(category);
+                const matchesSearch = searchTerm === '' || text.includes(searchTerm.toLowerCase());
+                
+                item.style.display = (matchesCategory && matchesSearch) ? 'flex' : 'none';
+            });
+        }
+
+        function updateProgress() {
+            // Por categoría
+            const sagPercent = categoryCounts.sag > 0 ? Math.round((visitedControls.sag.size / categoryCounts.sag) * 100) : 0;
+            const bolasPercent = categoryCounts.bolas > 0 ? Math.round((visitedControls.bolas.size / categoryCounts.bolas) * 100) : 0;
+            const flujoPercent = categoryCounts.flujo > 0 ? Math.round((visitedControls.flujo.size / categoryCounts.flujo) * 100) : 0;
+            const temperaturaPercent = categoryCounts.temperatura > 0 ? Math.round((visitedControls.temperatura.size / categoryCounts.temperatura) * 100) : 0;
+            
+            sagProgress.style.width = sagPercent + '%';
+            bolasProgress.style.width = bolasPercent + '%';
+            flujoProgress.style.width = flujoPercent + '%';
+            temperaturaProgress.style.width = temperaturaPercent + '%';
+            
+            sagPercentage.textContent = sagPercent + '%';
+            bolasPercentage.textContent = bolasPercent + '%';
+            flujoPercentage.textContent = flujoPercent + '%';
+            temperaturaPercentage.textContent = temperaturaPercent + '%';
+            
+            // General
+            const totalVisited = new Set();
+            Object.values(visitedControls).forEach(categorySet => {
+                categorySet.forEach(item => totalVisited.add(item));
+            });
+            
+            const overallPercent = Math.round((totalVisited.size / controlItems.length) * 100);
+            overallProgress.style.width = overallPercent + '%';
+            overallPercentage.textContent = overallPercent + '% completado';
+
+            // 👉 Desbloquear botón al 100%
+            if (overallPercent === 100) {
+                startButton.disabled = false;
+                startButton.classList.add('active'); // opcional, para darle estilo
+            } else {
+                startButton.disabled = true;
+                startButton.classList.remove('active');
+            }
+        }
+
+        updateProgress();
+    });
+    </script>
+
+    <script>
+    function openFullscreen() {
+    const img = document.getElementById("myImage");
+    if (img.requestFullscreen) {
+        img.requestFullscreen();
+    } else if (img.webkitRequestFullscreen) { // Safari
+        img.webkitRequestFullscreen();
+    } else if (img.msRequestFullscreen) { // IE11
+        img.msRequestFullscreen();
+    }
+    }
+    </script>
 
 
   <!-- Botón de continuar -->
-  <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
+    <button class="start-button" onclick="goToNextPage()" disabled>
+        Continuar <span class="arrow">❯</span>
+    </button>
+
 
   <!--AUDIOv2-->
   <div class="audio-control-wrapper" style="z-index: 9999;">
