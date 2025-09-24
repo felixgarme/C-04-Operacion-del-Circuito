@@ -4,61 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
+  <!-- Estilos -->
   <link rel="stylesheet" href="../../assets/css/main_ex.css" />
   <link rel="stylesheet" href="../../assets/css/sidebar.css" />
   <link rel="stylesheet" href="../../assets/css/ProgressBar.css" />
   <link rel="stylesheet" href="../../assets/css/ex1.css" />
-  <link rel="stylesheet" href="../../assets/css/M2/css_pg8.css" />
 
+    <link rel="stylesheet" href="../../assets/css/M2/css_pg8.css" />
+
+
+  <!-- Scripts -->
   <script src="../../js/sidebar.js" defer></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden; /* Evita el scroll no deseado */
-    }
-
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      height: 100vh; /* Altura total de la ventana */
-      /* padding: 20px; */
-      box-sizing: border-box;
-    }
-
-    .logo-container, header {
-      flex-shrink: 0; /* Evita que el logo y el título se encojan */
-    }
-
-    .contenido {
-      flex-grow: 1; /* Permite que el contenedor del iframe ocupe el espacio restante */
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* Centra verticalmente el iframe */
-      align-items: center; /* Centra horizontalmente el iframe */
-      width: 100%;
-    }
-
-    .iframe-carrusel {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    
-    /* Oculta el botón por defecto */
-    .start-button {
-      display: none; 
-    }
-
-    .titulo-epp {
-        padding-top: 0 !important;
-        padding-bottom: 20px;
-    }
-  </style>
-
 </head>
 
 <body>
@@ -86,17 +43,23 @@
         <div id="menu-container"></div>
     </nav>
 
-    <div class="main-container">
-      <div class="logo-container"><img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
-      <header><h1 class="titulo-epp"><span class="gradient-text2">Operación del circuito</span></h1></header>
 
-      <div class="contenido">
-          <iframe id="exerciseIframe" src="../componentes/xM3/xM3pg1.html" frameborder="0" class="iframe-carrusel"> </iframe>
-      </div>
+  <!-- Logo inferior -->
+  <div class="logo-container"><img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
+  <!-- Título principal -->
+  <header><h1 class="titulo-epp"><span class="gradient-text2">DESCRIPCIÓN DE LA MÁQUINA</span></h1></header>
+
+    <!-- Contenido principal -->
+    <div class="contenido">
+        <iframe src="../componentes/Carrucel_M2pg8.html" frameborder="0" class="iframe-carrusel"> </iframe>
     </div>
 
-  <button id="continueButton" class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
 
+
+  <!-- Botón de continuar -->
+  <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
+
+  <!--AUDIOv2-->
   <div class="audio-control-wrapper" style="z-index: 9999;">
       <button class="audio-toggle-btn" id="audioToggle">
           <svg id="togglePlayIcon" viewBox="0 0 24 24">
@@ -160,6 +123,7 @@
               </div>
           </div>
 
+          <!-- Audio element oculto -->
           <audio id="audioPlayer" preload="metadata" autoplay>
               <source src="../assets/audio/EX/ex2.wav" type="audio/mp3" />
               Tu navegador no soporta el elemento de audio.
@@ -168,11 +132,13 @@
   </div>
 
   <script src="../../js/audioPlayer.js"></script>
+  <!--///////-->
+  <!-- Scripts funcionales -->
   <script src="../../js/SCORM.js"></script>
   <script>
     // Navegación
     function goHome() { window.location.href = 'index.html'; }
-    function backPage() { window.location.href = 'M3_inicio.html'; }
+    function backPage() { window.location.href = 'M3_pg1.html'; }
     function goToNextPage() { window.location.href = 'M3_pg2.html'; }
 
     ScormManager.init();
@@ -183,18 +149,6 @@
       const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
       document.getElementById("progreso-barra").style.width = porcentaje + "%";
       document.getElementById("progreso-texto").textContent = porcentaje + "%";
-    });
-
-    // Código nuevo para manejar el mensaje del iframe
-    window.addEventListener('message', (event) => {
-      // Verifica si el mensaje viene del iframe y si es el mensaje de finalización
-      if (event.data.type === 'exerciseComplete' && event.data.success) {
-        // Muestra el botón de "Continuar"
-        const continueButton = document.getElementById('continueButton');
-        if (continueButton) {
-          continueButton.style.display = 'inline-flex'; // O 'block' dependiendo del estilo
-        }
-      }
     });
   </script>
 
