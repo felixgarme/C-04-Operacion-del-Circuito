@@ -4,16 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- Estilos -->
   <link rel="stylesheet" href="../../assets/css/main_ex.css" />
   <link rel="stylesheet" href="../../assets/css/sidebar.css" />
   <link rel="stylesheet" href="../../assets/css/ProgressBar.css" />
   <link rel="stylesheet" href="../../assets/css/ex1.css" />
+  <link rel="stylesheet" href="../../assets/css/M2/css_pg8.css" />
+  <style>
+    .contenido {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .iframe-carrusel {
+        width: 90%;
+        height: 60vh;
+    }
+  </style>
 
-    <link rel="stylesheet" href="../../assets/css/M2/css_pg8.css" />
-
-
-  <!-- Scripts -->
   <script src="../../js/sidebar.js" defer></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
@@ -44,29 +52,20 @@
     </nav>
 
 
-    <!-- Logo inferior -->
     <div class="logo-container"><img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
     
-    <!-- Título principal -->
     <header><h1 class="titulo-epp"><span class="gradient-text2">Descripción de los Controles Operacionales</span></h1></header>
 
-    <!-- Contenido principal -->
-
     <div class="contenido">
-    <iframe 
-        src="../componentes/xM1/Carrucel_M1pg2.html" 
-        frameborder="0" 
-        class="iframe-carrusel">
-    </iframe>
+        <iframe 
+            src="../componentes/xM1/Carrucel_M1pg2.html" 
+            frameborder="0" 
+            class="iframe-carrusel">
+        </iframe>
     </div>
 
-
-
-
-  <!-- Botón de continuar -->
   <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
 
-  <!--AUDIOv2-->
   <div class="audio-control-wrapper" style="z-index: 9999;">
       <button class="audio-toggle-btn" id="audioToggle">
           <svg id="togglePlayIcon" viewBox="0 0 24 24">
@@ -130,7 +129,6 @@
               </div>
           </div>
 
-          <!-- Audio element oculto -->
           <audio id="audioPlayer" preload="metadata" autoplay>
               <source src="../assets/audio/EX/ex2.wav" type="audio/mp3" />
               Tu navegador no soporta el elemento de audio.
@@ -139,8 +137,6 @@
   </div>
 
   <script src="../../js/audioPlayer.js"></script>
-  <!--///////-->
-  <!-- Scripts funcionales -->
   <script src="../../js/SCORM.js"></script>
   <script>
     // Navegación
