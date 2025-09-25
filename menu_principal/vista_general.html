@@ -26,39 +26,19 @@
 
         <main>
             <div class="grid-container">
-                <!-- Módulo 1 -->
                 <div class="card" style="background-image: url('images/caratulas/curso1.png');">
                     <img src="images/logo_blanco.png" alt="Logo AngloAmerican" class="logo-inicio">
                     <div class="inicio-box">
-                        <h1 class="inicio-title">Manual de operación</h1>
+                        <h1 class="inicio-title">Operacion del Circuito pt1</h1>
                         <button id="empezarBtn-1" class="start-button-card">Comenzar</button>
                     </div>
                 </div>
 
-                <!-- Módulo 2 -->
                 <div class="card" style="background-image: url('images/caratulas/curso2.png');">
                     <img src="images/logo_blanco.png" alt="Logo AngloAmerican" class="logo-inicio">
                     <div class="inicio-box">
-                        <h1 class="inicio-title">Mantenimiento de equipos móviles</h1>
+                        <h1 class="inicio-title">Operacion del Circuito pt2</h1>
                         <button id="empezarBtn-2" class="start-button-card">Comenzar</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 3 -->
-                <div class="card" style="background-image: url('images/caratulas/curso3.png');">
-                    <img src="images/logo_blanco.png" alt="Logo AngloAmerican" class="logo-inicio">
-                    <div class="inicio-box">
-                        <h1 class="inicio-title">Mantenimiento de grúa articulada</h1>
-                        <button id="empezarBtn-3" class="start-button-card">Comenzar</button>
-                    </div>
-                </div>
-
-                <!-- Módulo 4 -->
-                <div class="card" style="background-image: url('images/caratulas/curso4.png');">
-                    <img src="images/logo_blanco.png" alt="Logo AngloAmerican" class="logo-inicio">
-                    <div class="inicio-box">
-                        <h1 class="inicio-title">Aparejamiento de cargas y señales</h1>
-                        <button id="empezarBtn-4" class="start-button-card">Comenzar</button>
                     </div>
                 </div>
             </div>
@@ -86,6 +66,7 @@
 
     <script src="../js/audioPlayer.js"></script>
     <script src="../js/SCORM.js"></script>
+
     <script>
         // Redirigir con verificación
         function abrirModulo(ruta) {
@@ -104,19 +85,13 @@
 
         // Botones
         document.getElementById('empezarBtn-1').addEventListener('click', () => {
+            // Asegúrate de que esta ruta sea la correcta para el nuevo módulo
             abrirModulo("../Modulo 1 - Manual de operación de - grúa articulada Fassi, Hiab, Hyva/index.html");
         });
 
         document.getElementById('empezarBtn-2').addEventListener('click', () => {
-            abrirModulo("../Modulo 2 - Manual de mantenimiento de equipos móviles - perforadora Smart Rock D65/index.html");
-        });
-
-        document.getElementById('empezarBtn-3').addEventListener('click', () => {
-            abrirModulo("../Modulo 3 - Manual de mantenimiento de - grúa articulada/index.html");
-        });
-
-        document.getElementById('empezarBtn-4').addEventListener('click', () => {
-            abrirModulo("../Modulo 4 - Aparejamiento de cargas y señales estnadar en grúa articulada/index.html");
+            // Asegúrate de que esta ruta sea la correcta para el nuevo módulo
+            abrirModulo("../Modulo 2 - Operacion del Circuito pt2/index.html");
         });
 
         function backPage() {
