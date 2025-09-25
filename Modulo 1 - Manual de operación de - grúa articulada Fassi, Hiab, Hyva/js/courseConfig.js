@@ -4,7 +4,7 @@
 const courseConfig = {
     // Información general del curso
     courseInfo: {
-        title: "C-04-Operacion-del-Circuito",
+        title: "C-04 Operacion del Circuito",
         company: "Quellaveco",
         version: "1.0"
     },
