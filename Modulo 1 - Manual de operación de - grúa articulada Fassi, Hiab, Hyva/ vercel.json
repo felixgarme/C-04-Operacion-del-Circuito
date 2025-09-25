@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/manual/grua-articulada/modulo-1/pagina-:slug",
-      "destination": "/Modulo%201%20-%20Manual%20de%20operación%20de%20-%20grúa%20articulada%20Fassi,%20Hiab,%20Hyva/views/M1/M1_pg:slug.html"
-    }
-  ]
-}
