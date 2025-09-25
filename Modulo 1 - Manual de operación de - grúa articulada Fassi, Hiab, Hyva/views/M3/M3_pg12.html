@@ -140,38 +140,40 @@
         document.getElementById("progreso-barra").style.width = porcentaje + "%";
         document.getElementById("progreso-texto").textContent = porcentaje + "%";
 
-        // --- NUEVO CÓDIGO AÑADIDO ---
+        // --- LÓGICA DE MEMORIA Y DESBLOQUEO DEL BOTÓN ---
         
-        // 1. Seleccionamos el iframe y el botón que queremos desbloquear.
         const iframe = document.getElementById('activity-iframe');
         const continueButton = document.getElementById('next-page-button');
 
-        // 2. Esperamos a que el contenido del iframe se cargue por completo.
+        // Revisa en localStorage si la ruleta ya fue completada antes.
+        if (localStorage.getItem('ruletaCompletada') === 'true') {
+            console.log('La ruleta ya fue completada en una sesión anterior. Botón desbloqueado.');
+            continueButton.disabled = false;
+        }
+
+        // Este listener se mantiene para la primera vez que se complete la actividad.
         iframe.addEventListener('load', () => {
             try {
-                // 3. Accedemos a la ventana del iframe.
                 const iframeWindow = iframe.contentWindow;
-
-                // 4. Guardamos una referencia a la función console.log original del iframe.
                 const originalLog = iframeWindow.console.log;
 
-                // 5. Sobrescribimos la función console.log del iframe.
                 iframeWindow.console.log = function(...args) {
-                    // 6. Ejecutamos la función original para que el mensaje se siga mostrando en la consola.
                     originalLog.apply(iframeWindow.console, args);
 
-                    // 7. Buscamos si alguno de los argumentos del log es el mensaje que esperamos.
                     if (args.includes('ruleta terminada')) {
-                        console.log('¡Mensaje detectado! Desbloqueando el botón de continuar.');
-                        // 8. Si encontramos el mensaje, habilitamos el botón.
+                        console.log('¡Mensaje detectado! Desbloqueando el botón y guardando estado.');
+                        
+                        // 1. Desbloquea el botón
                         continueButton.disabled = false;
+                        
+                        // 2. Guarda el estado completado en localStorage.
+                        localStorage.setItem('ruletaCompletada', 'true');
                     }
                 };
             } catch (e) {
-                console.error("No se pudo acceder al contenido del iframe. Esto puede deberse a políticas de seguridad (CORS) si los archivos no están en el mismo dominio.", e);
+                console.error("No se pudo acceder al contenido del iframe.", e);
             }
         });
-
       });
     </script>
 </body>
