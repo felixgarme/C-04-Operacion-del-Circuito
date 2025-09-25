@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/manual/:modulo/:pagina",
+      "destination": "/manuales/:modulo/:pagina.html"
+    }
+  ]
+}
