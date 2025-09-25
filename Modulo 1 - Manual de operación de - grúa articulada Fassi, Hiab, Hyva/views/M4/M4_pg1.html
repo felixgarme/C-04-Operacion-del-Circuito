@@ -24,11 +24,10 @@
         height: 60vh;
     }
     
-    /* --- CSS AÑADIDO: Estilos para el botón deshabilitado --- */
     .start-button:disabled {
-        background-color: #cccccc; /* Color gris para indicar inactividad */
-        cursor: not-allowed;      /* Cursor que indica que no se puede hacer clic */
-        opacity: 0.6;             /* Opacidad reducida */
+        background-color: #cccccc;
+        cursor: not-allowed;
+        opacity: 0.6;
     }
     .start-button:disabled .arrow {
         color: #888888;
@@ -167,40 +166,48 @@
       document.getElementById("progreso-barra").style.width = porcentaje + "%";
       document.getElementById("progreso-texto").textContent = porcentaje + "%";
 
-      // --- SCRIPT AÑADIDO: Lógica para habilitar el botón ---
+      // --- SCRIPT MODIFICADO: Lógica de persistencia con localStorage ---
       
-      // 1. Obtenemos la referencia al botón de continuar.
       const continueButton = document.getElementById('continue-btn');
+      const completionKey = 'carruselTerminado'; // Clave para guardar en memoria
 
-      // 2. Guardamos una copia de la función original console.log.
+      // --- 1. VERIFICAR AL CARGAR LA PÁGINA ---
+      // Revisa si en localStorage ya existe la marca de 'completado'.
+      if (localStorage.getItem(completionKey) === 'true') {
+        continueButton.disabled = false; // Si existe, habilita el botón.
+        console.log('Tarea ya estaba completada. Botón habilitado desde el inicio.');
+      }
+
       const originalLog = console.log;
 
-      // 3. Sobreescribimos console.log con nuestra propia función.
       console.log = function(...args) {
-        // Primero, llamamos a la función original para que el mensaje
-        // siga apareciendo en la consola como siempre.
         originalLog.apply(console, args);
 
-        // 4. Revisamos si alguno de los argumentos del log contiene "terminado".
-        // Usamos .some() para detener la búsqueda en cuanto lo encontremos.
         const messageContainsTerminado = args.some(arg => 
           typeof arg === 'string' && arg.includes('terminado')
         );
 
-        // 5. Si se encuentra la palabra, habilitamos el botón.
         if (messageContainsTerminado) {
           continueButton.disabled = false;
-          originalLog('✅ Botón "Continuar" ha sido habilitado.');
+          
+          // --- 2. GUARDAR AL COMPLETAR ---
+          // Guarda el estado 'completado' en localStorage para futuras visitas.
+          localStorage.setItem(completionKey, 'true'); 
+          
+          originalLog('✅ Botón "Continuar" habilitado y estado guardado en memoria.');
         }
       };
       
     });
 
     // --- CÓDIGO DE PRUEBA: Simula un proceso que tarda 5 segundos ---
-    // Puedes borrar esto. Sirve para ver el efecto.
+    // Si borras el localStorage de tu navegador y recargas, verás el efecto de nuevo.
     setTimeout(() => {
-        console.log("Proceso del carrusel: terminado");
-    }, 5000); // Después de 5 segundos, el botón se habilitará.
+        // Solo envia el mensaje si la tarea no se ha completado antes
+        if (localStorage.getItem('carruselTerminado') !== 'true') {
+            console.log("Proceso del carrusel: terminado");
+        }
+    }, 1000);
 
   </script>
 
