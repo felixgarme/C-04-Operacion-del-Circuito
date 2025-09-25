@@ -242,3 +242,10 @@ html, body {
     height: 90%;
     border-radius: 10px;
 }
+@media (max-width: 400px) {
+
+    .with-info img{
+        width: 100% ;
+    }
+    
+}

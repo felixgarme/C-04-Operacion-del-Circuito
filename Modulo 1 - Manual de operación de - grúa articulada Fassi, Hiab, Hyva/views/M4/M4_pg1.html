@@ -8,31 +8,10 @@
   <link rel="stylesheet" href="../../assets/css/sidebar.css" />
   <link rel="stylesheet" href="../../assets/css/ProgressBar.css" />
   <link rel="stylesheet" href="../../assets/css/ex1.css" />
-  <link rel="stylesheet" href="../../assets/css/M2/css_pg8.css" />
+  <link rel="stylesheet" href="../../assets/css/M4/Acss_pg1.css" />
 
   <link rel="icon" href="../../assets/images/ico.png" type="image/png">
 
-  <style>
-    .contenido {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-    .iframe-carrusel {
-        width: 90%;
-        height: 60vh;
-    }
-    
-    .start-button:disabled {
-        background-color: #cccccc;
-        cursor: not-allowed;
-        opacity: 0.6;
-    }
-    .start-button:disabled .arrow {
-        color: #888888;
-    }
-  </style>
 
   <script src="../../js/sidebar.js" defer></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -67,15 +46,24 @@
     <div class="logo-container"><img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
     
     <header><h1 class="titulo-epp"><span class="gradient-text2">Sistema de recuperación de gruesos, molienda y pebbles
-</span></h1></header>
+    </span></h1></header>
 
-    <div class="contenido">
-        <iframe 
-            src="../componentes/xM4/Carrucel_M4pg1.html" 
-            frameborder="0" 
-            class="iframe-carrusel">
-        </iframe>
+    <!-- CONTENIDO -->
+    <div class="general">
+        <div class="contenido">
+            <iframe 
+                src="../componentes/xM4/Carrucel_M4pg1.html" 
+                frameborder="0" 
+                class="iframe-carrusel">
+            </iframe>
+        </div>
+
+        <div class="contenido container-video">
+            <h2 class="titulo-video">Molino SAG</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1wglNqMmDGk?si=-FPndL3YiU6oy8aE&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </div>
+
 
   <button id="continue-btn" class="start-button" onclick="goToNextPage()" disabled>Continuar <span class="arrow">❯</span></button>
 
