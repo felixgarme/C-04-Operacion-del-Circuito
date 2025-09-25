@@ -48,11 +48,12 @@
     <header><h1 class="titulo-epp"><span class="gradient-text2">Operaciones de Control Manual</span></h1></header>
 
     <div class="contenido">
-        <iframe src="../componentes/xM3/xM3_pg1.html" frameborder="0"></iframe>
+        <iframe src="../componentes/xM3/xM3_pg4.html" frameborder="0"></iframe>
     </div>
+
     <!-- goToNextPage -->
     <button class="start-button" onclick="goToNextPage()" disabled>Continuar <span class="arrow">❯</span></button>
-
+    
     <div class="audio-control-wrapper" style="z-index: 9999;">
         <button class="audio-toggle-btn" id="audioToggle">
             <svg id="togglePlayIcon" viewBox="0 0 24 24">
@@ -128,11 +129,11 @@
     <script>
       // Navegación
       function goHome() { window.location.href = 'index.html'; }
-      function backPage() { window.location.href = 'M3_inicio.html'; }
-      function goToNextPage() { window.location.href = 'M3_pg2.html'; }
+      function backPage() { window.location.href = 'M3_pg3.html'; }
+      function goToNextPage() { window.location.href = 'M3_pg5.html'; }
 
       ScormManager.init();
-      ScormManager.guardarProgreso("M3_pg1.html");
+      ScormManager.guardarProgreso("M3_pg4.html");
 
       document.addEventListener("DOMContentLoaded", () => {
         const progreso = ScormManager.cargarProgreso();

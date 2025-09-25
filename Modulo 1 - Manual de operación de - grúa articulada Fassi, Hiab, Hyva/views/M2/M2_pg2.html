@@ -4,19 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-    <!-- Estilos -->
-    <link rel="stylesheet" href="../../assets/css/main_ex.css" />
-    <link rel="stylesheet" href="../../assets/css/sidebar.css" />
-    <link rel="stylesheet" href="../../assets/css/ProgressBar.css" />
-    <link rel="stylesheet" href="../../assets/css/ex1.css" />
+  <link rel="stylesheet" href="../../assets/css/main_ex.css" />
+  <link rel="stylesheet" href="../../assets/css/sidebar.css" />
+  <link rel="stylesheet" href="../../assets/css/ProgressBar.css" />
+  <link rel="stylesheet" href="../../assets/css/ex1.css" />
+  <link rel="stylesheet" href="../../assets/css/M2/css_pg8.css" />
 
-    <link rel="stylesheet" href="../../assets/css/M3/css_pg1.css" />
+  <script src="../../js/sidebar.js" defer></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-    <!-- Scripts -->
-    <script src="../../js/sidebar.js" defer></script>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* Evita el scroll no deseado */
+    }
 
-    <title>Inspección preoperativa</title>
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh; /* Altura total de la ventana */
+      /* padding: 20px; */
+      box-sizing: border-box;
+    }
+
+    .logo-container, header {
+      flex-shrink: 0; /* Evita que el logo y el título se encojan */
+    }
+
+    .contenido {
+      flex-grow: 1; /* Permite que el contenedor del iframe ocupe el espacio restante */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centra verticalmente el iframe */
+      align-items: center; /* Centra horizontalmente el iframe */
+      width: 100%;
+    }
+
+    .iframe-carrusel {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    /* Oculta el botón por defecto */
+    .start-button {
+      display: none; 
+    }
+
+    .titulo-epp {
+        padding-top: 0 !important;
+        padding-bottom: 20px;
+    }
+    
+  </style>
+
 </head>
 
 <body>
@@ -44,256 +87,17 @@
         <div id="menu-container"></div>
     </nav>
 
+    <div class="main-container">
+      <div class="logo-container"><img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
+      <header><h1 class="titulo-epp"><span class="gradient-text2">Operación del circuito</span></h1></header>
 
-  <!-- Logo inferior -->
-  <div class="logo-container"><img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" /></div>
-  <!-- Título principal -->
-  <header><h1 class="titulo-epp"><span class="gradient-text2">Inspección preoperativa</span></h1></header>
-
-<!-- Contenido principal -->
-
-    <div class="inspection-course">
-    <link rel="stylesheet" href="../../../assets/css/M3/css_pg1.css">
-
-    <div class="course-container">
-
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰ Menú de Navegación</button>
-        <div class="mobile-overlay" onclick="closeMobileMenu()"></div>
-
-        <div class="course-content">
-        <nav class="sidebar">
-            <div class="sidebar-header">Contenido del Curso</div>
-            <a class="nav-item active" onclick="showSection('importancia')">Importancia de las Inspecciones</a>
-            <a class="nav-item" onclick="showSection('momentos')">Momentos de Inspección</a>
-            <a class="nav-item" onclick="showSection('ruta')">Ruta de Inspección</a>
-            <a class="nav-item" onclick="showSection('lateral-izq')">Inspección Lateral Izquierda</a>
-            <a class="nav-item" onclick="showSection('delantera')">Inspección Delantera</a>
-            <a class="nav-item" onclick="showSection('lateral-der')">Inspección Lateral Derecha</a>
-            <a class="nav-item" onclick="showSection('posterior')">Inspección Posterior</a>
-            <a class="nav-item" onclick="showSection('progreso')">Progreso del Curso</a>
-        </nav>
-
-        <main class="main-content">
-            <section id="importancia" class="section active">
-            <h2 class="section-title">Importancia de las Inspecciones en la Máquina</h2>
-            <div class="info-box">
-                <h3 class="section-subtitle">Objetivos Principales</h3>
-                <ul class="inspection-list">
-                <li class="inspection-item">
-                    <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                    <span class="inspection-text">Brindar datos reales al operador sobre el estado del equipo.</span>
-                </li>
-                <li class="inspection-item">
-                    <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                    <span class="inspection-text">Se recopila información para un mantenimiento y reparación eficiente.</span>
-                </li>
-                </ul>
-            </div>
-            </section>
-
-            <section id="momentos" class="section">
-            <h2 class="section-title">Momentos en que debe realizarse la Inspección Preoperativa</h2>
-            <div class="moments-list">
-                <div class="moment-item">Al inicio del turno</div>
-                <div class="moment-item">Cada vez que pare la máquina</div>
-                <div class="moment-item">Al finalizar el turno</div>
-            </div>
-            <div class="info-box">
-                <h3 class="section-subtitle">Consideraciones Importantes</h3>
-                <ul class="inspection-list">
-                <li class="inspection-item">
-                    <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                    <span class="inspection-text">Tener un punto de inicio.</span>
-                </li>
-                <li class="inspection-item">
-                    <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                    <span class="inspection-text">Mantener un orden lógico.</span>
-                </li>
-                </ul>
-            </div>
-            </section>
-
-            <section id="ruta" class="section">
-            <h2 class="section-title">Ruta de Inspección de la Grúa Articulada</h2>
-            <div class="info-box">
-                <p>La inspección deberá ser objetiva tomando como inicio el punto de acceso a la cabina del operador. Es primordial realizar la inspección antes de iniciar los trabajos de izaje. El operador debe verificar que todos los componentes de la grúa se encuentren en buenas condiciones.</p>
-            </div>
-            
-            <div class="route-diagram">
-                <h3 class="section-subtitle">Orden de Inspección</h3>
-                <div class="route-steps">
-                <div class="route-step">
-                    <div class="step-number">1</div>
-                    <div class="step-text">Inspección lado izquierdo</div>
-                </div>
-                <div class="route-step">
-                    <div class="step-number">2</div>
-                    <div class="step-text">Inspección parte delantera</div>
-                </div>
-                <div class="route-step">
-                    <div class="step-number">3</div>
-                    <div class="step-text">Inspección lado derecho</div>
-                </div>
-                <div class="route-step">
-                    <div class="step-number">4</div>
-                    <div class="step-text">Inspección parte posterior</div>
-                </div>
-                <div class="route-step">
-                    <div class="step-number">5</div>
-                    <div class="step-text">Inspección a nivel de piso</div>
-                </div>
-                </div>
-            </div>
-            </section>
-
-            <section id="lateral-izq" class="section">
-            <h2 class="section-title">Inspección de la Parte Lateral Izquierda</h2>
-            <ul class="inspection-list">
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar el cilindro, soportes y platillo del estabilizador posterior izquierdo.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar las ruedas, cubos reductores y suspensiones posteriores del lado izquierdo.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar el cilindro, soportes y platillo del estabilizador delantero izquierdo.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Revisar la base y rodamiento de rotación.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar el cilindro principal, brazo principal, cilindro secundario y brazo secundario.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar el tanque de aire, puerta principal de la cabina y rueda delantera izquierda.</span>
-                </li>
-            </ul>
-            </section>
-
-            <section id="delantera" class="section">
-            <h2 class="section-title">Inspección de la Parte Delantera</h2>
-            <ul class="inspection-list">
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar el nivel de aceite de motor diésel.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Revisar si el motor presenta fugas de aceite o combustible.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar el nivel de refrigerante.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Revisar si existen fugas de refrigerante por las mangueras o el radiador.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar el buen funcionamiento de luces de trabajo.</span>
-                </li>
-            </ul>
-            </section>
-
-            <section id="lateral-der" class="section">
-            <h2 class="section-title">Inspección de la Parte Lateral Derecha</h2>
-            <ul class="inspection-list">
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar la puerta derecha de la cabina.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar las articulaciones y componentes de la grúa articulada del lado derecho.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar el cilindro, soportes y platillo del estabilizador delantero derecho.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar las ruedas, cubos reductores y suspensiones posteriores del lado derecho.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar los cilindros, soportes y el platillo del estabilizador posterior derecho.</span>
-                </li>
-            </ul>
-            </section>
-
-            <section id="posterior" class="section">
-            <h2 class="section-title">Inspección de la Parte Posterior</h2>
-            <ul class="inspection-list">
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar las luces de trabajo, peligro y estacionamiento posteriores.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar los componentes de la estructura y del chasis.</span>
-                </li>
-                <li class="inspection-item">
-                <input type="checkbox" class="inspection-checkbox" onchange="updateProgress()">
-                <span class="inspection-text">Verificar los diafragmas de los frenos posteriores.</span>
-                </li>
-            </ul>
-            </section>
-
-            <section id="progreso" class="section">
-            <h2 class="section-title">Progreso del Curso</h2>
-            <div class="info-box">
-                <h3 class="section-subtitle">Estado de Completación</h3>
-                <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="progress-text" id="progressText">0% completado (0 de 23 elementos)</div>
-            </div>
-            <div class="info-box">
-                <h3 class="section-subtitle">Elementos Completados</h3>
-                <div id="completedItems">No hay elementos completados aún.</div>
-            </div>
-            </section>
-        </main>
-        </div>
+      <div class="contenido">
+          <iframe id="exerciseIframe" src="../componentes/xM2/xM2pg1.html" frameborder="0" class="iframe-carrusel"> </iframe>
+      </div>
     </div>
 
-    </div>
+  <button id="continueButton" class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
 
-    <script src="../../js/M3/js_pg1.js"></script>
-
-
-  <!-- Botón de continuar -->
-    <button class="start-button" onclick="goToNextPage()">Continuar <span class="arrow">❯</span></button>
-    <div class="" style="
-    
-    margin-right: 220px;
-    gap: 0px;
-    padding: 0px;
-    
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    
-    ">
-        <img src="../../assets/images/Icons/selcB.gif" style="
-        
-        width: 60px;
-
-        align-items: center;
- 
-        
-        ">
-    </div>
-
-
-  <!--AUDIOv2-->
   <div class="audio-control-wrapper" style="z-index: 9999;">
       <button class="audio-toggle-btn" id="audioToggle">
           <svg id="togglePlayIcon" viewBox="0 0 24 24">
@@ -357,17 +161,14 @@
               </div>
           </div>
 
-          <!-- Audio element oculto -->
           <audio id="audioPlayer" preload="metadata" autoplay>
-              <source src="../assets/audio/EX/ex2.wav" type="audio/mp3" />
+              <source src="../../assets/audio/M2/Ejer.wav" type="audio/mp3" />
               Tu navegador no soporta el elemento de audio.
           </audio>
       </div>
   </div>
 
   <script src="../../js/audioPlayer.js"></script>
-  <!--///////-->
-  <!-- Scripts funcionales -->
   <script src="../../js/SCORM.js"></script>
   <script>
     // Navegación
@@ -383,6 +184,18 @@
       const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
       document.getElementById("progreso-barra").style.width = porcentaje + "%";
       document.getElementById("progreso-texto").textContent = porcentaje + "%";
+    });
+
+    // Código nuevo para manejar el mensaje del iframe
+    window.addEventListener('message', (event) => {
+      // Verifica si el mensaje viene del iframe y si es el mensaje de finalización
+      if (event.data.type === 'exerciseComplete' && event.data.success) {
+        // Muestra el botón de "Continuar"
+        const continueButton = document.getElementById('continueButton');
+        if (continueButton) {
+          continueButton.style.display = 'inline-flex'; // O 'block' dependiendo del estilo
+        }
+      }
     });
   </script>
 

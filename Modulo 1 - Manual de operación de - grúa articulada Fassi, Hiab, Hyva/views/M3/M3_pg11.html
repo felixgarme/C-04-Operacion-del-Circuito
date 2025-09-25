@@ -48,11 +48,12 @@
     <header><h1 class="titulo-epp"><span class="gradient-text2">Operaciones de Control Manual</span></h1></header>
 
     <div class="contenido">
-        <iframe src="../componentes/xM3/xM3_pg1.html" frameborder="0"></iframe>
+        <iframe src="../componentes/xM3/xM3_pg11.html" frameborder="0"></iframe>
     </div>
+
     <!-- goToNextPage -->
     <button class="start-button" onclick="goToNextPage()" disabled>Continuar <span class="arrow">❯</span></button>
-
+    
     <div class="audio-control-wrapper" style="z-index: 9999;">
         <button class="audio-toggle-btn" id="audioToggle">
             <svg id="togglePlayIcon" viewBox="0 0 24 24">
@@ -80,7 +81,7 @@
                     <button class="control-btn play-pause-btn" id="playPauseBtn">
                         <svg id="playIcon" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z" />
-                        </svg>
+                        </svg>Modulo 1 - Manual de operación de - grúa articulada Fassi, Hiab, Hyva/views/M3/M3_pg6.html
                         <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none">
                             <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
                         </svg>
@@ -128,11 +129,11 @@
     <script>
       // Navegación
       function goHome() { window.location.href = 'index.html'; }
-      function backPage() { window.location.href = 'M3_inicio.html'; }
-      function goToNextPage() { window.location.href = 'M3_pg2.html'; }
+      function backPage() { window.location.href = 'M3_pg10.html'; }
+      function goToNextPage() { window.location.href = 'M3_pg12.html'; }
 
       ScormManager.init();
-      ScormManager.guardarProgreso("M3_pg1.html");
+      ScormManager.guardarProgreso("M3_pg11.html");
 
       document.addEventListener("DOMContentLoaded", () => {
         const progreso = ScormManager.cargarProgreso();

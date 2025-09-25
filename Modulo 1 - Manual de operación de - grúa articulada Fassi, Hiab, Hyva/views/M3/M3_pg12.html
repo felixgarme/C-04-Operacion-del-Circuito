@@ -48,11 +48,11 @@
     <header><h1 class="titulo-epp"><span class="gradient-text2">Operaciones de Control Manual</span></h1></header>
 
     <div class="contenido">
-        <iframe src="../componentes/xM3/xM3_pg1.html" frameborder="0"></iframe>
+        <iframe id="activity-iframe" src="../componentes/xM3/xM3_pg12.html" frameborder="0"></iframe>
     </div>
-    <!-- goToNextPage -->
-    <button class="start-button" onclick="goToNextPage()" disabled>Continuar <span class="arrow">❯</span></button>
 
+    <button id="next-page-button" class="start-button" onclick="goToNextPage()" disabled>Continuar <span class="arrow">❯</span></button>
+    
     <div class="audio-control-wrapper" style="z-index: 9999;">
         <button class="audio-toggle-btn" id="audioToggle">
             <svg id="togglePlayIcon" viewBox="0 0 24 24">
@@ -128,17 +128,50 @@
     <script>
       // Navegación
       function goHome() { window.location.href = 'index.html'; }
-      function backPage() { window.location.href = 'M3_inicio.html'; }
-      function goToNextPage() { window.location.href = 'M3_pg2.html'; }
+      function backPage() { window.location.href = 'M3_pg11.html'; }
+      function goToNextPage() { window.location.href = '../M4/M4_inicio.html'; }
 
       ScormManager.init();
-      ScormManager.guardarProgreso("M3_pg1.html");
+      ScormManager.guardarProgreso("M3_pg12.html");
 
       document.addEventListener("DOMContentLoaded", () => {
         const progreso = ScormManager.cargarProgreso();
         const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
         document.getElementById("progreso-barra").style.width = porcentaje + "%";
         document.getElementById("progreso-texto").textContent = porcentaje + "%";
+
+        // --- NUEVO CÓDIGO AÑADIDO ---
+        
+        // 1. Seleccionamos el iframe y el botón que queremos desbloquear.
+        const iframe = document.getElementById('activity-iframe');
+        const continueButton = document.getElementById('next-page-button');
+
+        // 2. Esperamos a que el contenido del iframe se cargue por completo.
+        iframe.addEventListener('load', () => {
+            try {
+                // 3. Accedemos a la ventana del iframe.
+                const iframeWindow = iframe.contentWindow;
+
+                // 4. Guardamos una referencia a la función console.log original del iframe.
+                const originalLog = iframeWindow.console.log;
+
+                // 5. Sobrescribimos la función console.log del iframe.
+                iframeWindow.console.log = function(...args) {
+                    // 6. Ejecutamos la función original para que el mensaje se siga mostrando en la consola.
+                    originalLog.apply(iframeWindow.console, args);
+
+                    // 7. Buscamos si alguno de los argumentos del log es el mensaje que esperamos.
+                    if (args.includes('ruleta terminada')) {
+                        console.log('¡Mensaje detectado! Desbloqueando el botón de continuar.');
+                        // 8. Si encontramos el mensaje, habilitamos el botón.
+                        continueButton.disabled = false;
+                    }
+                };
+            } catch (e) {
+                console.error("No se pudo acceder al contenido del iframe. Esto puede deberse a políticas de seguridad (CORS) si los archivos no están en el mismo dominio.", e);
+            }
+        });
+
       });
     </script>
 </body>
