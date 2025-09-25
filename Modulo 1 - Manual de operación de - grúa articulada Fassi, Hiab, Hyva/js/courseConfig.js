@@ -4,7 +4,7 @@
 const courseConfig = {
     // Información general del curso
     courseInfo: {
-        title: "Aparejamiento de cargas y señales estándar en grúa articulada",
+        title: "C-04-Operacion-del-Circuito",
         company: "Quellaveco",
         version: "1.0"
     },
