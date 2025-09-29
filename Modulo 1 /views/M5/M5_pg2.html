@@ -20,6 +20,15 @@
 </head>
 
 <body>
+
+  <style>
+    @media (max-width: 420px) {
+      .start-button{
+        padding: 18px 20px;
+      }
+    }
+  </style>
+  
   <!-- Botón volver -->
   <button class="back-page-btn" onclick="backPage()">
     <span class="arrow">❮</span>
@@ -64,13 +73,16 @@
 
   <!-- Contenido principal -->
   <div class="iframe-container">
-    <iframe src="../componentes/xM5/xM5_pg1.html"></iframe>
+    <iframe src="../componentes/xM5/xM5_pg2.html"></iframe>
   </div>
 
   <!-- Botón de continuar -->
   <button class="start-button" onclick="goToNextPage()">
-    Continuar<span class="arrow">❯</span>
+    Conclusiones<span class="arrow">❯</span>
   </button>
+
+  <!-- Reproductor -->
+  <iframe src="../componentes/xaudio.html" class="audio-iframe" data-audio="../../assets/audio/M2/pg5.wav" title="Reproductor de audio"></iframe>
 
   <!-- Scripts funcionales -->
   <script src="../../js/audioPlayer.js"></script>
@@ -78,8 +90,8 @@
   <script>
     // Navegación
     function goHome() { window.location.href = 'index.html'; }
-    function backPage() { window.location.href = 'M5_inicio.html'; }
-    function goToNextPage() { window.location.href = 'M5_pg2.html'; }
+    function backPage() { window.location.href = 'M5_pg1.html'; }
+    function goToNextPage() { window.location.href = '../../index.html'; }
 
     // Inicialización SCORM
     ScormManager.init();
