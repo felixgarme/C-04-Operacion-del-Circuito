@@ -8,7 +8,6 @@
 
   <title>PROCEDIMIENTO DE OPERACIÓN</title>
   
-  <!-- Estilos -->
   <link rel="stylesheet" href="../../assets/css/main_ex.css" />
   <link rel="stylesheet" href="../../assets/css/sidebar.css" />
   <link rel="stylesheet" href="../../assets/css/ProgressBar.css" />
@@ -16,7 +15,6 @@
   <link rel="stylesheet" href="../../assets/css/reproductor-iframe.css" />
   <link rel="stylesheet" href="../../assets/css/M1/css_pg1_iframe_content.css" />
 
-  <!-- Scripts -->
   <script src="../../js/sidebar.js" defer></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
@@ -32,14 +30,18 @@
     .iframe-container iframe {
       height: 110%;
     }
+    /* Estilo adicional para que el botón se vea claramente deshabilitado */
+    .start-button:disabled {
+      background: #c0c0c0;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
   </style>
   
-  <!-- Botón volver -->
   <button class="back-page-btn" onclick="backPage()">
     <span class="arrow">❮</span>
   </button>
 
-  <!-- Sidebar -->
   <nav id="sidebar" class="close">
     <div id="logo-seccion">
       <a href="../../index">
@@ -64,32 +66,26 @@
     <div id="menu-container"></div>
   </nav>
 
-  <!-- Logo inferior -->
   <div class="logo-container">
     <img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo" />
   </div>
 
-  <!-- Título principal -->
   <header>
     <h1 class="titulo-epp">
       <span class="gradient-text2">Ahorcado - Indicadores de gestión</span>
     </h1>
   </header>
 
-  <!-- Contenido principal -->
   <div class="iframe-container">
     <iframe src="../componentes/xM1/xM1_pg2.html"></iframe>
   </div>
 
-  <!-- Botón de continuar -->
-  <button class="start-button" onclick="goToNextPage()">
-    siguiente<span class="arrow">❯</span>
+  <button id="nextButton" class="start-button" onclick="goToNextPage()" disabled>
+    Siguiente<span class="arrow">❯</span>
   </button>
 
-  <!-- Reproductor -->
   <iframe src="../componentes/xaudio.html" class="audio-iframe" data-audio="../../assets/audio/M1/pg2.wav" title="Reproductor de audio"></iframe>
 
-  <!-- Scripts funcionales -->
   <script src="../../js/audioPlayer.js"></script>
   <script src="../../js/SCORM.js"></script>
   <script>
@@ -103,10 +99,39 @@
     ScormManager.guardarProgreso("M1_pg2.html");
 
     document.addEventListener("DOMContentLoaded", () => {
+      // Carga de progreso SCORM
       const progreso = ScormManager.cargarProgreso();
       const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
       document.getElementById("progreso-barra").style.width = porcentaje + "%";
       document.getElementById("progreso-texto").textContent = porcentaje + "%";
+
+      // --- MODIFICACIÓN 1: COMPROBAR EL ESTADO AL CARGAR LA PÁGINA ---
+      // Revisa en localStorage si el juego ya fue completado anteriormente.
+      if (localStorage.getItem('hangmanCompleted') === 'true') {
+        console.log('El juego ya estaba completado. Botón desbloqueado desde el inicio.');
+        const nextButton = document.getElementById('nextButton');
+        if (nextButton) {
+          nextButton.disabled = false;
+        }
+      }
+    });
+
+    // Escucha los mensajes provenientes del iframe.
+    window.addEventListener('message', function(event) {
+      // Comprobamos si el mensaje recibido es el que esperamos del juego del ahorcado.
+      if (event.data === 'ahoracado-terminado') {
+        console.log('Mensaje recibido desde el ahorcado. Desbloqueando botón y guardando estado.');
+        
+        const nextButton = document.getElementById('nextButton');
+        
+        if (nextButton) {
+          nextButton.disabled = false;
+        }
+
+        // --- MODIFICACIÓN 2: GUARDAR EL ESTADO AL GANAR ---
+        // Guarda en localStorage la confirmación de que el juego se completó.
+        localStorage.setItem('hangmanCompleted', 'true');
+      }
     });
   </script>
 </body>

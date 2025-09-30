@@ -389,10 +389,15 @@ function showHangmanPart() {
 }
 
 function checkWin() {
+  // Comprueba si todas las letras de la palabra han sido adivinadas
   if (selectedWord.split('').every(letter => guessedLetters.includes(letter))) {
     status.textContent = 'Felicidades, has ganado';
     status.className = 'hangman-status win';
     disableAllKeys();
+    // ----- MODIFICACIÓN AQUÍ -----
+    // Envía el mensaje a la consola cuando se gana el juego
+    console.log('ahoracado-terminado');
+    window.parent.postMessage('ahoracado-terminado', '*');
   }
 }
 
