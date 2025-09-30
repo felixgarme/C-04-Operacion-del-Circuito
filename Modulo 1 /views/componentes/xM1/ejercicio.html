@@ -507,6 +507,43 @@ class MatchingGame {
     this.gameCompleted = true;
     const resultMessage = document.getElementById('resultMessage');
     resultMessage.classList.add('show');
+
+    // ---------------------------
+    // Envío del mensaje pedido:
+    // 1) Disparo de evento custom en el documento con nombre 'ejercicio-terminado'
+    // 2) postMessage al window.parent (por si el juego está en un iframe)
+    // 3) console.log por soporte de debugging
+    // ---------------------------
+
+    try {
+      // 1) CustomEvent en el documento
+      const detail = { matches: this.matches, total: this.totalMatches, timestamp: Date.now() };
+      const finishedEvent = new CustomEvent('ejercicio-terminado', { detail });
+      document.dispatchEvent(finishedEvent);
+    } catch (e) {
+      // no critical — seguimos
+      console.warn('No se pudo despachar CustomEvent ejercicio-terminado:', e);
+    }
+
+    try {
+      // 2) postMessage al parent (si está en iframe). Enviamos un objeto con type para facilitar filtrado.
+      if (window.parent && window.parent !== window && typeof window.parent.postMessage === 'function') {
+        window.parent.postMessage({ type: 'ejercicio-terminado', matches: this.matches, total: this.totalMatches }, '*');
+      } else {
+        // Si no hay parent distinto, también enviamos un mensaje al mismo window para listeners locales
+        window.postMessage({ type: 'ejercicio-terminado', matches: this.matches, total: this.totalMatches }, '*');
+      }
+    } catch (e) {
+      console.warn('No se pudo enviar postMessage ejercicio-terminado:', e);
+    }
+
+    // 3) Log para facilitar verificación rápida
+    try {
+      console.log('ejercicio-terminado', { matches: this.matches, total: this.totalMatches });
+      window.parent.postMessage('ejercicio-terminado', '*');
+    } catch (e) {
+      // ignore
+    }
   }
   
   resetGame() {

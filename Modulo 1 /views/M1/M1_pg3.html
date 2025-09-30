@@ -24,6 +24,12 @@
       width: 90%;
       height: 60vh;
     }
+
+    /* clase opcional para estilo cuando está bloqueado (no rompe nada si no existe) */
+    .start-button.locked {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   </style>
 
   <script src="../../js/sidebar.js" defer></script>
@@ -92,6 +98,123 @@
       document.getElementById("progreso-texto").textContent = porcentaje + "%";
     });
   </script>
+
+  <!-- === Añadido: Escucha mensajes desde el iframe y desbloqueo del botón "Continuar" === -->
+  <script>
+    (function () {
+      // Selector del botón continuar
+      const CONTINUE_KEY = 'M1_pg3_unlocked'; // clave en localStorage para persistir el estado
+      const btnSelector = '.start-button';
+      let continueBtn;
+
+      // Función para habilitar el botón
+      function unlockContinue(sourceInfo) {
+        if (!continueBtn) continueBtn = document.querySelector(btnSelector);
+        if (!continueBtn) return;
+        continueBtn.disabled = false;
+        continueBtn.classList.remove('locked');
+        continueBtn.setAttribute('aria-disabled', 'false');
+
+        // Persistir que está desbloqueado (para que sobreviva recargas)
+        try {
+          localStorage.setItem(CONTINUE_KEY, 'true');
+        } catch (e) {
+          console.warn('No se pudo guardar estado en localStorage:', e);
+        }
+
+        // Registrar para debugging
+        try {
+          console.log('Botón "Continuar" desbloqueado por mensaje:', sourceInfo || {});
+        } catch (e) {}
+      }
+
+      // Si se desea bloquear el botón al cargar (sin eliminar nada del HTML), lo hacemos por JS:
+      function lockContinue() {
+        if (!continueBtn) continueBtn = document.querySelector(btnSelector);
+        if (!continueBtn) return;
+        continueBtn.disabled = true;
+        continueBtn.classList.add('locked');
+        continueBtn.setAttribute('aria-disabled', 'true');
+      }
+
+      // Manejador de mensajes postMessage
+      function onMessage(event) {
+        // event.data puede ser string o un objeto. Aceptamos:
+        // - 'ejercicio-terminado' (string)
+        // - { type: 'ejercicio-terminado', ... }
+        // - cualquier objeto que tenga la propiedad 'type' igual a 'ejercicio-terminado'
+        const data = event.data;
+
+        if (!data) return;
+
+        // Caso: mensaje como string exacto
+        if (typeof data === 'string' && data === 'ejercicio-terminado') {
+          unlockContinue({ source: 'postMessage:string', origin: event.origin });
+          return;
+        }
+
+        // Caso: objeto con type
+        if (typeof data === 'object' && (data.type === 'ejercicio-terminado' || data.type === 'ejercicio terminado' )) {
+          unlockContinue({ source: 'postMessage:object', payload: data, origin: event.origin });
+          return;
+        }
+
+        // Caso: objeto enviado directamente desde el iframe (sin field type), soportamos también si data.ejercicioTerminó o similar
+        if (typeof data === 'object' && (data.ejercicio === 'terminado' || data.status === 'terminado')) {
+          unlockContinue({ source: 'postMessage:object-alternative', payload: data, origin: event.origin });
+          return;
+        }
+
+        // no relevante
+      }
+
+      // También escuchamos un CustomEvent 'ejercicio-terminado' en caso de que la página hija (si está en el mismo contexto) lo despache.
+      // Nota: un CustomEvent disparado dentro del iframe no llega al padre; esto es de respaldo solo si ambos contextos comparten documento.
+      function onCustomEvent(e) {
+        try {
+          if (!e) return;
+          unlockContinue({ source: 'custom-event', detail: e.detail || null });
+        } catch (err) {
+          console.warn(err);
+        }
+      }
+
+      // Inicialización al DOMContentLoaded
+      document.addEventListener('DOMContentLoaded', () => {
+        continueBtn = document.querySelector(btnSelector);
+
+        // Bloquear el botón inicialmente (sin tocar el HTML original)
+        lockContinue();
+
+        // Si el estado estaba guardado como desbloqueado, lo aplicamos
+        try {
+          if (localStorage.getItem(CONTINUE_KEY) === 'true') {
+            // desbloquea sin necesidad de mensaje
+            unlockContinue({ source: 'localStorage' });
+            return;
+          }
+        } catch (e) {
+          // ignore
+        }
+
+        // Añadir listeners
+        window.addEventListener('message', onMessage, false);
+        document.addEventListener('ejercicio-terminado', onCustomEvent, false);
+
+        // Opcional: expone una función global para desbloquear (útil para testing manual)
+        window.__unlockContinueForTesting = function() {
+          unlockContinue({ source: 'manual-invoke' });
+        };
+      });
+
+      // Seguridad: si la página se cierra o se navega fuera, puede limpiar listeners si lo desea
+      window.addEventListener('beforeunload', () => {
+        window.removeEventListener('message', onMessage, false);
+        document.removeEventListener('ejercicio-terminado', onCustomEvent, false);
+      });
+    })();
+  </script>
+  <!-- === Fin añadido === -->
 
 </body>
 </html>
