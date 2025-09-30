@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indicadores de Producción</title>
-    <link rel="stylesheet" href="../../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../../assets/css/ProgressBar.css">
-    <link rel="stylesheet" href="../../assets/css/reproductor-iframe.css">
+  <link rel="stylesheet" href="../../assets/css/main_ex.css" />
+  <link rel="stylesheet" href="../../assets/css/sidebar.css" />
+  <link rel="stylesheet" href="../../assets/css/ProgressBar.css" />
+  <link rel="stylesheet" href="../../assets/css/ex1.css" />
+  <link rel="stylesheet" href="../../assets/css/reproductor-iframe.css" />
+
     
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <link rel="icon" href="../../assets/images/ico.png" type="image/png">
@@ -46,7 +49,7 @@
             background: #fff;
             color: var(--color-gris);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: hidden; 
         }
 
         .logo-container {
@@ -322,6 +325,9 @@
     </style>
 </head>
 <body>
+            <div class="logo-container">
+        <img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo">
+    </div>
     <button class="back-page-btn" onclick="backPage()">
         <span class="arrow">❮</span>
     </button>
@@ -345,128 +351,252 @@
         </div>
         <div id="menu-container"></div>
     </nav>
-    
+
     <iframe src="../componentes/xaudio.html" class="audio-iframe" data-audio="../../assets/audio/M2/pg1.wav" title="Reproductor de audio"></iframe>
 
-    <div class="logo-container">
-        <img src="../../assets/images/logo_color.png" alt="Logo AngloAmerican" class="logo">
-    </div>
     <div class="container">
-        <div class="header">
-            <h1>Principales indicadores de producción</h1>
-            <h2>Key Performance Indicators (KPIs)</h2>
-        </div>
-        <div class="instruction-box">
-            <img src="../../assets/images/Icons/selcA.gif" alt="click-gif" class="gif">
-            <p>Navega por las pestañas para explorar los principales indicadores de producción y su importancia en el proceso.</p>
-        </div>
+            <div class="header">
+                <h1>Interpretación de costos operativos</h1>
+                <h2>Operational Costs</h2>
+            </div>
+            <div class="instruction-box">
+                <img src="../../assets/images/Icons/selcA.gif" alt="click-gif" class="gif">
+                <p>Navega por las pestañas para explorar la interpretación de los costos operativos y su desglose.</p>
+            </div>
 
-        <div class="navigation-tabs">
-            <button class="tab-btn active" onclick="showTab('vision-general')">Visión General</button>
-            <button class="tab-btn" onclick="showTab('p80-p90')">P80 y P90</button>
-            <button class="tab-btn" onclick="showTab('factores-influyen')">Factores Influyentes</button>
-            <button class="tab-btn" onclick="showTab('recuperacion-mineral')">Recuperación</button>
-            <button class="tab-btn" onclick="showTab('optimizacion')">Optimización</button>
-        </div>
-        
-        <div class="content-area">
-            <div id="vision-general" class="tab-content active">
-                <div class="timeline-container">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>¿Qué son los KPIs?</h3>
-                            <p>Los <strong>KPIs</strong> (Key Performance Indicators) son métricas cuantificables utilizadas para medir y evaluar el desempeño de un proceso en relación con sus objetivos estratégicos.</p>
-                            <p>Sirven para monitorear el progreso, identificar áreas de mejora, tomar decisiones informadas y evaluar la eficacia de las estrategias implementadas.</p>
-                        </div>
-                    </div>
-                     <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h4>Aplicación en Fajas Transportadoras</h4>
-                            <p>En el caso de las fajas transportadoras, se aplican para evaluar la <strong>disponibilidad operativa</strong>, el <strong>tonelaje transportado por hora (TPH)</strong>, el <strong>consumo energético</strong>, los <strong>tiempos de parada</strong> y el cumplimiento en <strong>seguridad</strong>.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="navigation-tabs">
+                <button class="tab-btn active" onclick="showTab('vision-general')">Visión General</button>
+                <button class="tab-btn" onclick="showTab('costos-directos')">Costos Directos</button>
+                <button class="tab-btn" onclick="showTab('costos-indirectos')">Costos Indirectos</button>
+                <button class="tab-btn" onclick="showTab('detalle-directos')">Detalle Directos</button>
+                <button class="tab-btn" onclick="showTab('detalle-indirectos')">Detalle Indirectos</button>
             </div>
             
-            <div id="p80-p90" class="tab-content">
-                <div class="standards-grid">
-                    <div class="standard-card">
-                        <div class="card-header">
-                            <h3>P80</h3>
+            <div class="content-area">
+                <div id="vision-general" class="tab-content active">
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>¿Qué es un Costo Operativo?</h3>
+                                <p>Un <strong>costo operativo</strong> es el gasto que incurre una empresa para mantener su operación diaria y producir bienes o servicios. Incluye todos los desembolsos necesarios para que la actividad productiva funcione, excluyendo inversiones en activos fijos o pagos de deudas.</p>
+                                <p>En minería o industrias de proceso, por ejemplo, los costos operativos incluyen combustible, electricidad, repuestos, personal operativo y mantenimiento de equipos.</p>
+                                <img src="../../assets/images/M2/A.png" alt="">
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <p>Representa el tamaño de malla por el cual pasa el <strong>80% del material</strong>, quedando el 20% retenido. Es el parámetro más común para indicar el grado de finura del mineral molido y asegurar la calidad para la siguiente etapa del proceso.</p>
-                        </div>
-                    </div>
-                    <div class="standard-card">
-                        <div class="card-header">
-                            <h3>P90</h3>
-                        </div>
-                        <div class="card-body">
-                           <p>Similar al P80, indica que el <strong>90% del material</strong> pasa a través de la malla y el 10% queda retenido. Este valor es útil para ajustes más finos de la granulometría, buscando cumplir especificaciones más estrictas del proceso.</p>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h4>Clasificación General</h4>
+                                <p><strong>Costos directos:</strong> relacionados directamente con la producción, como materia prima, energía y mano de obra directa.</p>
+                                <p><strong>Costos indirectos:</strong> gastos necesarios para operar pero no directamente atribuibles a un producto específico, como mantenimiento, administración, seguros y suministros.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                
+                <div id="costos-directos" class="tab-content">
+                    <h3>Costos directos del circuito clasificación-molienda</h3>
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Tipo de Costo</th>
+                                <th>Costo Unitario Estimado (USD/t mineral)</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Energía eléctrica (molinos, fajas, chancadora)</td>
+                                <td>Directo</td>
+                                <td>4.5</td>
+                                <td>Basado en consumo de molinos SAG y bolas de 5,652 t/h</td>
+                            </tr>
+                            <tr>
+                                <td>Agua de proceso</td>
+                                <td>Directo</td>
+                                <td>0.8</td>
+                                <td>Incluye dilución, lavado de pebbles e hidrociclones</td>
+                            </tr>
+                            <tr>
+                                <td>Bolas de acero</td>
+                                <td>Directo</td>
+                                <td>2</td>
+                                <td>Carga continua y recirculante en molinos SAG y de bolas</td>
+                            </tr>
+                            <tr>
+                                <td>Diésel y combustible móvil</td>
+                                <td>Directo</td>
+                                <td>1.2</td>
+                                <td>Para diésel en molino (Mo) y equipos de pila de acopio</td>
+                            </tr>
+                            <tr>
+                                <td>Cal y reactivos</td>
+                                <td>Directo</td>
+                                <td>1</td>
+                                <td>Ajuste de pH y preparación de pulpa para flotación</td>
+                            </tr>
+                            <tr>
+                                <td>Mantenimiento de equipos rotativos</td>
+                                <td>Directo</td>
+                                <td>3.5</td>
+                                <td>Incluye revisiones y reparaciones de molinos y chancadora</td>
+                            </tr>
+                            <tr>
+                                <td>Repuestos transportadores y chancadoras</td>
+                                <td>Directo</td>
+                                <td>1.5</td>
+                                <td>Correas, zarandas, rodillos y chancadoras de pebbles</td>
+                            </tr>
+                            <tr>
+                                <td>Lubricantes y consumibles</td>
+                                <td>Directo</td>
+                                <td>0.5</td>
+                                <td>Grasas, filtros y otros consumibles de operación</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-            <div id="factores-influyen" class="tab-content">
-                <div class="timeline-container">
-                     <div class="timeline-item">
-                         <div class="timeline-content">
-                             <h3>Factores en la Distribución de Partículas</h3>
-                             <ul class="details-list">
-                                 <li><strong>Condiciones de molienda:</strong> La velocidad de rotación, la carga de bolas y el tipo de material.</li>
-                                 <li><strong>Tipo de molino:</strong> El diseño (SAG, bolas) afecta cómo se fragmentan las partículas.</li>
-                                 <li><strong>Carga de material:</strong> La cantidad de mineral dentro del molino.</li>
-                                 <li><strong>Tiempo de molienda:</strong> Más tiempo generalmente produce partículas más finas.</li>
-                                 <li><strong>Medios de molienda:</strong> El tamaño y la cantidad de bolas influyen en la eficiencia.</li>
-                             </ul>
-                         </div>
-                     </div>
+                <div id="costos-indirectos" class="tab-content">
+                    <h3>Costos indirectos del circuito clasificación-molienda</h3>
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Concepto</th>
+                                <th>Tipo de Costo</th>
+                                <th>Costo Unitario Estimado (USD/t mineral)</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Personal operativo</td>
+                                <td>Indirecto</td>
+                                <td>2</td>
+                                <td>Operadores, sala de control y supervisión</td>
+                            </tr>
+                            <tr>
+                                <td>Ventilación y aire comprimido</td>
+                                <td>Indirecto</td>
+                                <td>0.3</td>
+                                <td>Incluye ventilador túnel y sistemas de aire</td>
+                            </tr>
+                            <tr>
+                                <td>Supresión de polvo y colectores</td>
+                                <td>Indirecto</td>
+                                <td>0.4</td>
+                                <td>Energía y mantenimiento de filtros y colectores</td>
+                            </tr>
+                            <tr>
+                                <td>Seguridad industrial y ambiental</td>
+                                <td>Indirecto</td>
+                                <td>0.6</td>
+                                <td>EPP, monitoreo y control ambiental</td>
+                            </tr>
+                            <tr>
+                                <td>Costos administrativos</td>
+                                <td>Indirecto</td>
+                                <td>0.8</td>
+                                <td>Supervisión, planificación y control de operación</td>
+                            </tr>
+                            <tr>
+                                <td>Depreciación de equipos e instalaciones</td>
+                                <td>Indirecto</td>
+                                <td>3</td>
+                                <td>Molinos, fajas, edificios y estructuras</td>
+                            </tr>
+                            <tr>
+                                <td>Gestión de residuos y derrames</td>
+                                <td>Indirecto</td>
+                                <td>0.5</td>
+                                <td>Recuperación de mineral, manejo de derrames menores</td>
+                            </tr>
+                            <tr>
+                                <td>Servicios generales de planta</td>
+                                <td>Indirecto</td>
+                                <td>0.3</td>
+                                <td>Iluminación, limpieza, comunicaciones</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
 
-            <div id="recuperacion-mineral" class="tab-content">
-                <div class="timeline-container">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>Recuperación de Mineral</h3>
-                            <p>Es un parámetro clave que se refiere al <strong>porcentaje de mineral valioso</strong> que es extraído del mineral original durante el procesamiento.</p>
-                            <p>Una alta recuperación implica que la mayor parte del mineral valioso ha sido extraída, mientras que una baja recuperación sugiere pérdidas significativas. Medir y optimizar la recuperación es esencial para la rentabilidad de la operación.</p>
+                <div id="detalle-directos" class="tab-content">
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Energía Eléctrica (Molinos, Fajas, Chancadora)</h3>
+                                <p><strong>Descripción:</strong> Este costo incluye el consumo de electricidad de todos los equipos principales del circuito. Es fundamental para mantener el movimiento continuo del mineral y asegurar que los procesos operen de manera constante.</p>
+                                <p><strong>Interpretación:</strong> Representa una parte significativa del costo operativo. Optimizar el uso de energía permite reducir costos, mejorar la sostenibilidad y asegurar la continuidad operativa del circuito.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Bolas de Acero</h3>
+                                <p><strong>Descripción:</strong> Se refiere a la adquisición y dosificación de bolas de acero usadas como medio de molienda. Las bolas permiten la reducción eficiente del tamaño del mineral, facilitando la liberación de minerales valiosos.</p>
+                                <p><strong>Interpretación:</strong> Es un gasto en insumos críticos. La correcta gestión y reposición de las bolas influye en la eficiencia de molienda y asegura que el circuito produzca un tamaño de partículas uniforme.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Cal y Reactivos</h3>
+                                <p><strong>Descripción:</strong> Corresponde a la adquisición y dosificación de cal y otros reactivos para el ajuste de pH y preparación del mineral para la flotación. Son esenciales para mantener las condiciones químicas óptimas.</p>
+                                <p><strong>Interpretación:</strong> Es una inversión directa en materiales que aseguran la eficiencia metalúrgica. Un manejo adecuado permite maximizar la recuperación de minerales y minimizar pérdidas.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Mantenimiento de Equipos Rotativos</h3>
+                                <p><strong>Descripción:</strong> Abarca las actividades de mantenimiento preventivo y correctivo de equipos como molinos, chancadoras y bombas. Su objetivo es asegurar la operación continua y prolongar la vida útil de los equipos.</p>
+                                <p><strong>Interpretación:</strong> Es una inversión clave para garantizar la confiabilidad y eficiencia del circuito. Un mantenimiento adecuado reduce paradas no planificadas y optimiza la producción.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="detalle-indirectos" class="tab-content">
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Personal Operativo</h3>
+                                <p><strong>Descripción:</strong> Incluye a todos los trabajadores involucrados en la operación del circuito (operadores de molinos, sala de control, etc.). Su labor es esencial para mantener la continuidad y seguridad del proceso.</p>
+                                <p><strong>Interpretación:</strong> Refleja la inversión en capital humano. Una adecuada capacitación y distribución de roles impacta directamente en la productividad y minimiza riesgos de accidentes.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Seguridad Industrial y Ambiental</h3>
+                                <p><strong>Descripción:</strong> Abarca las medidas y recursos para proteger la salud del personal y el entorno, incluyendo EPP, monitoreo ambiental y programas de seguridad.</p>
+                                <p><strong>Interpretación:</strong> Es la inversión en condiciones seguras de trabajo y cumplimiento de normativas. Una gestión efectiva previene accidentes y reduce riesgos legales.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <h3>Depreciación de Equipos e Instalaciones</h3>
+                                <p><strong>Descripción:</strong> Refleja la pérdida de valor de los activos (molinos, fajas, edificios) debido al uso, desgaste y envejecimiento a lo largo del tiempo.</p>
+                                <p><strong>Interpretación:</strong> Es un gasto contable que permite recuperar la inversión en activos. Considerar la depreciación es clave para evaluar la rentabilidad y planificar reemplazos futuros.</p>
+                            </div>
+                        </div>
+                        <div class="btn-siguiente">
+                            <button class="interactive-button" onclick="goToNextPage()">
+                                Continuar
+                                <span class="arrow">❯</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div id="optimizacion" class="tab-content">
-                <div class="timeline-container">
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <h3>Optimización de la Recuperación</h3>
-                            <p>Involucra el monitoreo y ajuste continuo de parámetros como el <strong>tamaño de partícula (P80)</strong>, la <strong>densidad de la pulpa</strong> y la <strong>dosificación de reactivos</strong>.</p>
-                            <p>La implementación de tecnologías de control avanzadas y el mantenimiento adecuado de los equipos son esenciales para mantener altos niveles de recuperación y asegurar que la planta opere dentro de sus parámetros ideales.</p>
-                        </div>
-                    </div>
-                    <div class="btn-siguiente">
-                        <button class="interactive-button" onclick="goToNextPage()">
-                            Continuar
-                            <span class="arrow">❯</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     
     <script src="../js/SCORM.js"></script>
 <script>
     // --- Funciones de Navegación ---
     function backPage() { 
-        window.location.href = 'M2_pg1.html'; 
+        window.location.href = 'M2_inicio.html'; 
     }
 
     function goToNextPage() { 
-        window.location.href = '../M2/M2_inicio.html'; 
+        window.location.href = '../M2/M2_pg2.html'; 
     }
 
     // --- Funcionalidad de Pestañas (Tabs) ---
@@ -499,7 +629,7 @@
 
     // Inicializa SCORM y guarda el progreso para la página actual
     ScormManager.init();
-    ScormManager.guardarProgreso("M2_pg2.html");
+    ScormManager.guardarProgreso("M2_pg1.html");
     
     // Actualiza la barra de progreso cuando el contenido de la página se ha cargado
     document.addEventListener("DOMContentLoaded", () => {

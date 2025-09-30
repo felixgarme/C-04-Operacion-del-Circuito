@@ -157,7 +157,7 @@
     </div>
     
     <script src="../../js/SCORM.js"></script>
-<script>
+    <script>
     // --- Funciones de Navegación ---
     function backPage() { 
         window.location.href = 'M1_inicio.html'; 
@@ -178,7 +178,7 @@
         document.getElementById(tabName).classList.add('active');
         document.querySelector(`.tab-btn[onclick="showTab('${tabName}')"]`).classList.add('active');
     }
-    
+
     // Inicia mostrando la primera pestaña al cargar la página
     window.addEventListener('load', () => {
         showTab('vision-general');
@@ -198,7 +198,7 @@
     // Inicializa SCORM y guarda el progreso para la página actual
     ScormManager.init();
     ScormManager.guardarProgreso("M1_pg1.html");
-    
+
     // Actualiza la barra de progreso cuando el contenido de la página se ha cargado
     document.addEventListener("DOMContentLoaded", () => {
         const progreso = ScormManager.cargarProgreso();
@@ -213,16 +213,16 @@
 
     // --- Comunicación con iFrame (para ejercicios interactivos) ---
     window.addEventListener('message', (event) => {
-      // Verifica si el mensaje viene de un iframe y es para notificar que un ejercicio se completó con éxito
-      if (event.data.type === 'exerciseComplete' && event.data.success) {
+        // Verifica si el mensaje viene de un iframe y es para notificar que un ejercicio se completó con éxito
+        if (event.data.type === 'exerciseComplete' && event.data.success) {
         // Muestra el botón de "Continuar"
         // Asegúrate de que tu botón "Continuar" tenga el id="continueButton" en el HTML
         const continueButton = document.getElementById('continueButton'); 
         if (continueButton) {
-          continueButton.style.display = 'inline-flex'; // O 'block', según el estilo del botón
+            continueButton.style.display = 'inline-flex'; // O 'block', según el estilo del botón
         }
-      }
+        }
     });
-</script>
+    </script>
 </body>
 </html>
