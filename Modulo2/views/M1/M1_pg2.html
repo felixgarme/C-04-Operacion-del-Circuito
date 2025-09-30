@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <link rel="icon" href="../../assets/images/ico.png" type="image/png">
+
   <title>PROCEDIMIENTO DE OPERACIÓN</title>
   
   <!-- Estilos -->
@@ -26,6 +28,9 @@
       .start-button{
         padding: 18px 20px;
       }
+    }
+    .iframe-container iframe {
+      height: 110%;
     }
   </style>
   
@@ -67,7 +72,7 @@
   <!-- Título principal -->
   <header>
     <h1 class="titulo-epp">
-      <span class="gradient-text2">Ahorcado</span>
+      <span class="gradient-text2">Ahorcado - Indicadores de gestión</span>
     </h1>
   </header>
 
@@ -82,7 +87,7 @@
   </button>
 
   <!-- Reproductor -->
-  <iframe src="../componentes/xaudio.html" class="audio-iframe" data-audio="../../assets/audio/M5/pg1-2.wav" title="Reproductor de audio"></iframe>
+  <iframe src="../componentes/xaudio.html" class="audio-iframe" data-audio="../../assets/audio/M1/pg2.wav" title="Reproductor de audio"></iframe>
 
   <!-- Scripts funcionales -->
   <script src="../../js/audioPlayer.js"></script>
@@ -90,12 +95,12 @@
   <script>
     // Navegación
     function goHome() { window.location.href = 'index.html'; }
-    function backPage() { window.location.href = 'M5_pg1.html'; }
-    function goToNextPage() { window.location.href = '../conclusiones.html'; }
+    function backPage() { window.location.href = 'M1_pg1.html'; }
+    function goToNextPage() { window.location.href = 'M1_pg3.html'; }
 
     // Inicialización SCORM
     ScormManager.init();
-    ScormManager.guardarProgreso("M5_pg2.html");
+    ScormManager.guardarProgreso("M1_pg2.html");
 
     document.addEventListener("DOMContentLoaded", () => {
       const progreso = ScormManager.cargarProgreso();
