@@ -1,4 +1,3 @@
-
 class CarouselController {
   constructor() {
     this.currentSlide = 0;
@@ -39,6 +38,12 @@ class CarouselController {
     indicators.forEach((indicator, index) => {
       indicator.classList.toggle('active', index === this.currentSlide);
     });
+
+    // Cuando se llega a la última diapositiva, mostrar en consola "carrucel-terminado".
+    if (this.currentSlide === this.totalSlides - 1) {
+      console.log('carrucel-terminado');
+      window.parent.postMessage('carrucel-terminado', '*');
+    }
   }
 
   nextSlide() {

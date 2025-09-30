@@ -266,6 +266,80 @@
             });
         });
 
+        // ----- Persistencia en localStorage -----
+        const STORAGE_KEY = 'controlsState_v1';
+
+        function saveState() {
+            try {
+                const state = {
+                    visited: {
+                        sag: Array.from(visitedControls.sag),
+                        bolas: Array.from(visitedControls.bolas),
+                        flujo: Array.from(visitedControls.flujo),
+                        temperatura: Array.from(visitedControls.temperatura)
+                    },
+                    activeFilter: document.querySelector('.filter-btn.active')?.getAttribute('data-filter') || 'all',
+                    search: searchBox.value || ''
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+            } catch (e) {
+                console.error('Error saving state to localStorage', e);
+            }
+        }
+
+        function loadState() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return;
+                const state = JSON.parse(raw);
+
+                // Restaurar visitedControls
+                for (const cat of ['sag','bolas','flujo','temperatura']) {
+                    visitedControls[cat] = new Set(state.visited?.[cat] || []);
+                }
+
+                // Aplicar visualmente los controles revelados/ocultos según visitedControls
+                controlItems.forEach(item => {
+                    const num = item.querySelector('.control-number').textContent;
+                    const cats = item.getAttribute('data-category').split(' ');
+                    const controlText = item.querySelector('.control-text');
+                    const controlIcon = item.querySelector('.control-icon');
+
+                    // Si el control aparece en cualquier categoría visitada, muéstralo como revelado
+                    const revealed = cats.some(c => visitedControls[c] && visitedControls[c].has(num));
+                    if (revealed) {
+                        controlText.classList.remove('hidden');
+                        controlIcon.classList.add('hidden');
+                        item.classList.add('revealed');
+                    } else {
+                        controlText.classList.add('hidden');
+                        controlIcon.classList.remove('hidden');
+                        item.classList.remove('revealed');
+                    }
+                });
+
+                // Restaurar filtro activo
+                const af = state.activeFilter || 'all';
+                filterButtons.forEach(btn => {
+                    const isActive = btn.getAttribute('data-filter') === af;
+                    if (isActive) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Restaurar texto de búsqueda
+                searchBox.value = state.search || '';
+
+                // Aplicar filtro con los valores restaurados
+                filterControls(af, searchBox.value);
+            } catch (e) {
+                console.error('Error loading state from localStorage', e);
+            }
+        }
+        // ----- fin persistencia -----
+
         // Filtros
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -274,6 +348,9 @@
                 
                 const filterValue = this.getAttribute('data-filter');
                 filterControls(filterValue, searchBox.value);
+
+                // Guardar filtro seleccionado
+                saveState();
             });
         });
 
@@ -281,6 +358,9 @@
         searchBox.addEventListener('input', function() {
             const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
             filterControls(activeFilter, this.value);
+
+            // Guardar texto de búsqueda
+            saveState();
         });
 
         // Interacción con cada control
@@ -314,6 +394,9 @@
                     });
                     updateProgress();
                 }
+
+                // Guardar cambios cada vez que se revela/oculta un control
+                saveState();
             });
         });
 
@@ -366,6 +449,9 @@
             }
         }
 
+        // Cargar estado guardado antes de la primera actualización del progreso
+        loadState();
+
         updateProgress();
     });
     </script>
@@ -384,9 +470,9 @@
     </script>
 
 
-  <!-- Botón de continuar -->
+    <!-- Botón de continuar -->
     <button class="start-button" onclick="goToNextPage()" disabled>
-        Continuar <span class="arrow">❯</span>
+    Continuar <span class="arrow">❯</span>
     </button>
 
 
@@ -394,11 +480,9 @@
     <iframe src="../componentes/xaudio.html" class="audio-iframe" data-audio="../../assets/audio/M1/pg1.wav" title="Reproductor de audio"></iframe>
 
 
-  <script src="../../js/audioPlayer.js"></script>
-  <!--///////-->
-  <!-- Scripts funcionales -->
-  <script src="../../js/SCORM.js"></script>
-  <script>
+    <!-- Scripts funcionales -->
+    <script src="../../js/SCORM.js"></script>
+    <script>
     // Navegación
     function goHome() { window.location.href = 'index.html'; }
     function backPage() { window.location.href = 'M1_inicio.html'; }
@@ -408,12 +492,12 @@
     ScormManager.guardarProgreso("M1_pg1.html");
 
     document.addEventListener("DOMContentLoaded", () => {
-      const progreso = ScormManager.cargarProgreso();
-      const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
-      document.getElementById("progreso-barra").style.width = porcentaje + "%";
-      document.getElementById("progreso-texto").textContent = porcentaje + "%";
+        const progreso = ScormManager.cargarProgreso();
+        const porcentaje = progreso.score ? parseInt(progreso.score) : 0;
+        document.getElementById("progreso-barra").style.width = porcentaje + "%";
+        document.getElementById("progreso-texto").textContent = porcentaje + "%";
     });
-  </script>
+    </script>
 
 </body>
 </html>
