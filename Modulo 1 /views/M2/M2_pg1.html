@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="../../assets/css/reproductor-iframe.css">
     <link rel="icon" type="image/x-icon" href="../../favicon.ico">
     <script type="text/javascript" src="../../js/sidebar.js" defer></script>
-    <script src="../js/audioPlayer.js"></script>
-    <script src="../js/SCORM.js"></script>
+
+
 
     <link rel="icon" href="../../assets/images/ico.png" type="image/png">
 
@@ -450,6 +450,7 @@
             </div>
         </div>
     </div>
+    <script src="../js/SCORM.js"></script>
     <script>
         function showTab(tabName) {
             const tabContents = document.querySelectorAll('.tab-content');
@@ -498,7 +499,7 @@
         
         // SCORM Initialization
         ScormManager.init();
-        ScormManager.guardarProgreso("M2_circuito_molienda.html");
+        ScormManager.guardarProgreso("M2_pg1.html");
         
         document.addEventListener("DOMContentLoaded", () => {
             const progreso = ScormManager.cargarProgreso();
